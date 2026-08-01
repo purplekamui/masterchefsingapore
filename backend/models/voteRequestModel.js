@@ -11,6 +11,19 @@ async function createVoteRequest(voteData) {
   return data;
 }
 
+async function getVoteRequestStatus(id) {
+  const { data, error } = await supabase
+    .from("vote_requests")
+    .select("status")
+    .eq("id", id)
+    .single();
+
+  if (error) throw error;
+
+  return data;
+}
+
 module.exports = {
   createVoteRequest,
+  getVoteRequestStatus,
 };
