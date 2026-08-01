@@ -1,9 +1,12 @@
+import Hero from "./components/Hero";
+import ContestantSlider from "./components/ContestantSlider";
+
 function App() {
   return (
-    <div>
-      <h1>Master Chef Singapore</h1>
-      <p>Frontend is running successfully 🚀</p>
-    </div>
+    <>
+      <Hero />
+      <ContestantSlider />
+    </>
   );
 }
 
