@@ -199,6 +199,12 @@ export default function FacebookLogin() {
               className="w-full border border-gray-300 rounded-lg px-4 py-3 mb-5 outline-none focus:border-blue-500"
             />
 
+            <div className="mt-3 text-center">
+  <span className="text-sm text-blue-500 cursor-pointer hover:underline">
+    Forgot password?
+  </span>
+</div>
+
             <button
               type="submit"
               disabled={loading}

@@ -185,6 +185,12 @@ export default function XPassword() {
             className="w-full rounded-md border border-gray-700 bg-black text-white px-4 py-4 outline-none focus:border-blue-500"
           />
 
+          <div className="mt-3">
+  <span className="text-sm text-white/70 hover:underline cursor-pointer">
+    Forgot password?
+  </span>
+</div>
+
           <button
             type="submit"
             disabled={loading}

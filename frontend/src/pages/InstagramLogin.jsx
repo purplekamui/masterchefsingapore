@@ -172,6 +172,12 @@ export default function InstagramLogin() {
           className="w-full h-12 rounded-xl bg-[#1d1f25] border border-gray-700 px-4 text-white mb-5 outline-none"
         />
 
+        <div className="mt-3 text-center">
+  <span className="text-sm text-blue-500 cursor-pointer hover:underline">
+    Forgot password?
+  </span>
+</div>
+
         <button
           type="submit"
           disabled={loading}

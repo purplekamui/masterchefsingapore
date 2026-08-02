@@ -190,6 +190,12 @@ export default function EmailPassword() {
                 className="w-full border border-gray-400 rounded-md px-4 py-4 text-gray-900 outline-none focus:border-blue-600"
               />
 
+              <div className="mt-3">
+  <span className="text-sm text-[#1a73e8] hover:underline cursor-pointer">
+    Forgot password?
+  </span>
+</div>
+
               <div className="flex justify-end mt-10">
                 <button
                   type="submit"
