@@ -1,48 +1,17 @@
-import { useState } from "react";
-
-const contestants = [
-  {
-    name: "Yip Pin Xiu",
-    age: 32,
-    votes: "127,451",
-    image: "/contestants/yip-pin-xiu.jpg",
-  },
-  {
-    name: "Ning Cai",
-    age: 30,
-    votes: "112,638",
-    image: "/contestants/ning-cai.jpg",
-  },
-  {
-    name: "Maurice Baker",
-    age: 37,
-    votes: "98,421",
-    image: "/contestants/maurice-baker.jpg",
-  },
-  {
-    name: "Ben Yeo",
-    age: 53,
-    votes: "87,564",
-    image: "/contestants/ben-yeo.jpg",
-  },
-  {
-    name: "Anthony Chen",
-    age: 46,
-    votes: "75,410",
-    image: "/contestants/anthony-chen.jpg",
-  },
-];
-
-export default function ContestantCard() {
-  const [current, setCurrent] = useState(0);
-
+export default function ContestantCard({
+  contestants,
+  current,
+  setCurrent,
+}) {
   const contestant = contestants[current];
 
-  const next = () =>
+  function next() {
     setCurrent((current + 1) % contestants.length);
+  }
 
-  const prev = () =>
+  function prev() {
     setCurrent((current - 1 + contestants.length) % contestants.length);
+  }
 
   return (
     <section className="pb-8 px-5">

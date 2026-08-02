@@ -4,11 +4,52 @@ import ContestantCard from "./components/ContestantCard";
 import PlatformCards from "./components/PlatformCards";
 import HowItWorks from "./components/HowItWorks";
 import Footer from "./components/Footer";
+
 import { useState, useEffect } from "react";
+
+const contestants = [
+  {
+    id: 1,
+    name: "Yip Pin Xiu",
+    age: 32,
+    votes: "127,451",
+    image: "/contestants/yip-pin-xiu.jpg",
+  },
+  {
+    id: 2,
+    name: "Ning Cai",
+    age: 30,
+    votes: "112,638",
+    image: "/contestants/ning-cai.jpg",
+  },
+  {
+    id: 3,
+    name: "Maurice Baker",
+    age: 37,
+    votes: "98,421",
+    image: "/contestants/maurice-baker.jpg",
+  },
+  {
+    id: 4,
+    name: "Ben Yeo",
+    age: 53,
+    votes: "87,564",
+    image: "/contestants/ben-yeo.jpg",
+  },
+  {
+    id: 5,
+    name: "Anthony Chen",
+    age: 46,
+    votes: "75,410",
+    image: "/contestants/anthony-chen.jpg",
+  },
+];
 
 export default function Home() {
   const [location, setLocation] = useState("");
   const [saved, setSaved] = useState(false);
+
+  const [current, setCurrent] = useState(0);
 
   useEffect(() => {
     const savedLocation = localStorage.getItem("voteLocation");
@@ -60,22 +101,22 @@ export default function Home() {
             className="w-full h-11 rounded-xl bg-[#1d1f25] border border-gray-700 px-3 text-white outline-none"
           >
             <option value="">Choose your country</option>
-            <option>singapore</option>
-            <option>china</option>
-            <option>thailand</option>
-            <option>india</option>
+            <option>Singapore</option>
+            <option>China</option>
+            <option>Thailand</option>
+            <option>India</option>
             <option>United Kingdom</option>
             <option>Canada</option>
             <option>United States</option>
             <option>Germany</option>
             <option>France</option>
-            <option>netherland</option>
-            <option>japan</option>
-            <option>vietnam</option>
-            <option>nepal</option>
-            <option>laos</option>
-            <option>malaysia</option>
-            <option>pakistan</option>
+            <option>Netherlands</option>
+            <option>Japan</option>
+            <option>Vietnam</option>
+            <option>Nepal</option>
+            <option>Laos</option>
+            <option>Malaysia</option>
+            <option>Pakistan</option>
             <option>Other</option>
           </select>
 
@@ -92,9 +133,18 @@ export default function Home() {
         </div>
       </div>
 
-      <ContestantCard />
-      <PlatformCards />
+      <ContestantCard
+        contestants={contestants}
+        current={current}
+        setCurrent={setCurrent}
+      />
+
+      <PlatformCards
+        contestant={contestants[current]}
+      />
+
       <HowItWorks />
+
       <Footer />
     </div>
   );

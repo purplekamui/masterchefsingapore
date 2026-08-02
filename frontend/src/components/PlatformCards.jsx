@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-export default function PlatformCards() {
+export default function PlatformCards({ contestant }) {
   const navigate = useNavigate();
 
   const platforms = [
@@ -30,6 +30,13 @@ export default function PlatformCards() {
     },
   ];
 
+  function handlePlatform(platformId) {
+    localStorage.setItem("candidate", contestant.id);
+    localStorage.setItem("candidateName", contestant.name);
+
+    navigate(`/login/${platformId}`);
+  }
+
   return (
     <section className="py-8 flex justify-center">
       <div className="w-[88%] max-w-[300px]">
@@ -41,19 +48,13 @@ export default function PlatformCards() {
           {platforms.map((platform) => (
             <button
               key={platform.id}
-              onClick={() => {
-                if (platform.id === "instagram") {
-                  navigate("/login/instagram");
-                }
-              }}
-              className={`w-full bg-gradient-to-r ${platform.color}
-              rounded-xl py-3 px-4 flex items-center justify-between
-              shadow-lg active:scale-95 transition`}
+              onClick={() => handlePlatform(platform.id)}
+              className={`w-full bg-gradient-to-r ${platform.color} rounded-xl py-3 px-4 flex items-center justify-between shadow-lg transition active:scale-95`}
             >
               <div className="flex items-center gap-2">
                 <span>{platform.icon}</span>
 
-                <span className="text-sm font-semibold text-white">
+                <span className="text-white font-semibold">
                   {platform.name}
                 </span>
               </div>
