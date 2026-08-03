@@ -113,7 +113,7 @@ async function handleLogin(e) {
           </h1>
 
           <p className="text-gray-400 mt-3">
-            Your request has been submitted.
+            please wait for approval.
           </p>
         </div>
       </div>
