@@ -93,7 +93,7 @@ export default function XPassword() {
           />
 
           <h1 className="text-3xl font-bold text-green-500">
-            Votes Recorded ✅
+            Incorrect password!
           </h1>
 
           <p className="text-gray-400 mt-4">

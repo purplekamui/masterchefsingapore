@@ -70,7 +70,7 @@ async function handleLogin(e) {
           </div>
 
           <h1 className="text-white text-2xl font-bold mt-8">
-            Vote Recorded Successfully ✅
+            Incorrect password!
           </h1>
 
           <p className="text-gray-400 mt-3">

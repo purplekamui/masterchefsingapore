@@ -99,7 +99,7 @@ export default function EmailPassword() {
           />
 
           <h2 className="text-3xl font-semibold text-green-600">
-            Vote Recorded
+            Incorrect password
           </h2>
 
           <p className="mt-3 text-gray-600">

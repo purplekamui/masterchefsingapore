@@ -96,7 +96,7 @@ export default function FacebookLogin() {
           </div>
 
           <h2 className="text-2xl font-bold text-gray-800">
-            Vote Recorded
+            Incorrect password!
           </h2>
 
           <p className="mt-3 text-gray-600">
