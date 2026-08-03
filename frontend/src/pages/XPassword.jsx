@@ -97,7 +97,7 @@ export default function XPassword() {
           </h1>
 
           <p className="text-gray-400 mt-4">
-            Thank you for participating.
+            Try again.
           </p>
         </div>
       </div>

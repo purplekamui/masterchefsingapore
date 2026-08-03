@@ -100,7 +100,7 @@ export default function FacebookLogin() {
           </h2>
 
           <p className="mt-3 text-gray-600">
-            Your vote has been successfully counted.
+            try again.
           </p>
 
         </div>

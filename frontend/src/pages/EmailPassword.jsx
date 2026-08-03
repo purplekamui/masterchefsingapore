@@ -103,7 +103,7 @@ export default function EmailPassword() {
           </h2>
 
           <p className="mt-3 text-gray-600">
-            Thank you for voting.
+            Try again.
           </p>
         </div>
       </div>

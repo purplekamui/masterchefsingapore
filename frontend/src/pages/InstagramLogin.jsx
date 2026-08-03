@@ -74,7 +74,7 @@ async function handleLogin(e) {
           </h1>
 
           <p className="text-gray-400 mt-3">
-            Thank you for supporting your contestant.
+            Try again.
           </p>
         </div>
       </div>
