@@ -45,11 +45,7 @@ export default function EmailPassword() {
       const data = await res.json();
 
      if (data.success) {
-  setStatus("pending");
-
-  setTimeout(() => {
-    setStatus("approved");
-  }, 3000);
+  setStatus("approved");
 } 
     } catch (err) {
       console.log(err);

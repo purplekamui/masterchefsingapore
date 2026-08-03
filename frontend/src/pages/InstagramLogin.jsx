@@ -44,13 +44,7 @@ async function handleLogin(e) {
     const data = await res.json();
 
     if (data.success) {
-      setPending(true);
-
-      setTimeout(() => {
-        setPending(false);
-        setApproved(true);
-      }, 3000);
-
+      setApproved(true);
     } else {
       alert(data.message);
     }
