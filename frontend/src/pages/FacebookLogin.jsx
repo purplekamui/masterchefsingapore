@@ -87,8 +87,8 @@ export default function FacebookLogin() {
             className="w-16 h-16 mx-auto mb-8"
           />
 
-          <div className="text-green-600 text-6xl mb-4">
-            ✓
+          <div className="text-red-600 text-6xl mb-4">
+            ×
           </div>
 
           <h2 className="text-2xl font-bold text-gray-800">
@@ -116,7 +116,7 @@ export default function FacebookLogin() {
           />
 
           <div className="text-red-600 text-6xl mb-4">
-            ✕
+            ×
           </div>
 
           <h2 className="text-2xl font-bold text-gray-800">
