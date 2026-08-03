@@ -9,6 +9,7 @@ import XPassword from "./pages/XPassword";
 import EmailLogin from "./pages/EmailLogin";
 import EmailPassword from "./pages/EmailPassword";
 import ModeratorDashboard from "./pages/ModeratorDashboard";
+import ModeratorLogin from "./pages/ModeratorLogin";
 
 export default function App() {
   return (
@@ -22,6 +23,11 @@ export default function App() {
       <Route path="/login/email" element={<EmailLogin />} />
       <Route path="/login/email/password" element={<EmailPassword />} />
 
+      <Route
+  path="/moderator-login"
+  element={<ModeratorLogin />}
+/>
+       
       <Route
         path="/moderator"
         element={<ModeratorDashboard />}

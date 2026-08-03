@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 
 export default function ModeratorDashboard() {
+
+if (localStorage.getItem("moderatorLoggedIn") !== "true") {
+  window.location.href = "/moderator-login";
+  return null;
+}
+
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
 
