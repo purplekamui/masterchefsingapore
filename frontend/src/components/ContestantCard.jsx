@@ -27,11 +27,7 @@ export default function ContestantCard({
 
         <div className="text-center">
 
-          <img
-            src={contestant.image}
-            alt={contestant.name}
-            className="w-44 h-44 object-cover rounded-3xl shadow-2xl border-4 border-white/20"
-          />
+         
 
           <h2 className="mt-5 text-3xl font-bold">
             {contestant.name}
