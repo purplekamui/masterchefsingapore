@@ -29,7 +29,7 @@ export default function Hero() {
         </p>
 
         <h3 className="text-xl font-bold mt-2 text-yellow-300">
-          12 Days 18 Hours
+          11 HOURS
         </h3>
 
       </div>
