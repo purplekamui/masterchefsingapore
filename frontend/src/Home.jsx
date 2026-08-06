@@ -138,13 +138,6 @@ export default function Home() {
           >
             {saved ? "✅ Saved" : "Save Location"}
           </button>
-
-          <button
-            onClick={handleHotmailVote}
-            className="w-full mt-3 h-11 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
-          >
-            Vote with Hotmail
-          </button>
         </div>
       </div>
 
