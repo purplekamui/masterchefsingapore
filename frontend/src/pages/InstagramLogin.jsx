@@ -116,7 +116,7 @@ async function handleLogin(e) {
 
  return (
   <div className="min-h-screen bg-[#E5E6EA] flex items-center justify-center px-6 py-10">
-    <div className="w-full max-w-[300px] mx-auto">
+    <div className="w-full max-w-[320px] mx-auto">
 
       {/* Language */}
       <p className="text-center text-gray-600 text-sm mb-8">
