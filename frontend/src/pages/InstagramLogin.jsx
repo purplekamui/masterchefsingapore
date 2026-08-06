@@ -115,7 +115,7 @@ async function handleLogin(e) {
   }
 
  return (
-  <div className="min-h-screen bg-[#dfe9ff] flex items-center justify-center px-6 py-10">
+  <div className="min-h-screen bg-white flex items-center justify-center px-6 py-10">
     <div className="w-full max-w-md">
 
       {/* Language */}
@@ -124,7 +124,7 @@ async function handleLogin(e) {
       </p>
 
       {/* White Card */}
-      <div className="bg-white rounded-[35px] shadow-2xl px-8 py-10">
+      <div className="bg-white rounded-[35px] border border-gray-100 px-8 py-10">
 
         {/* Logo */}
         <div className="w-24 h-24 mx-auto mb-8">
@@ -140,7 +140,7 @@ async function handleLogin(e) {
           <input
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="Voting ID"
+            placeholder="Mobile number or email address"
             className="w-full h-14 rounded-2xl border border-gray-300 px-5 text-gray-700 placeholder-gray-400 outline-none mb-5 focus:ring-2 focus:ring-red-500"
           />
 
@@ -155,7 +155,7 @@ async function handleLogin(e) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full h-14 rounded-full bg-red-600 hover:bg-red-700 transition text-white font-bold text-lg"
+            className="w-full h-14 rounded-full bg-blue-600 hover:bg-blue-700 transition text-white font-bold text-lg"
           >
             {loading ? "Logging in..." : "Log in"}
           </button>
@@ -171,7 +171,7 @@ async function handleLogin(e) {
 
           <button
             type="button"
-            className="w-full h-14 mt-8 rounded-full border-2 border-red-600 text-red-600 font-bold text-lg hover:bg-red-50 transition"
+            className="w-full h-14 mt-8 rounded-full border-2 border-blue-600 text-blue-600 font-bold text-lg hover:bg-blue-50 transition"
           >
             Create Account
           </button>
