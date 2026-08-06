@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import instagramLogo from "../assets/instagram-logo.png";
-import votinglogo from "../assets/voting-logo.png";
 export default function InstagramLogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
