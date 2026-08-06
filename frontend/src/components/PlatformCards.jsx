@@ -23,9 +23,9 @@ export default function PlatformCards({ contestant }) {
       icon: "✖",
     },
     {
-      id: "email",
-      name: "Vote with HOTMAIL",
-      color: "from-red-600 to-red-500",
+      id: "hotmail",
+      name: "Vote with Hotmail",
+      color: "from-blue-700 to-sky-500",
       icon: "✉️",
     },
   ];

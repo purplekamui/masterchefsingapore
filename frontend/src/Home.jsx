@@ -6,6 +6,7 @@ import HowItWorks from "./components/HowItWorks";
 import Footer from "./components/Footer";
 
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const contestants = [
   {
@@ -50,6 +51,7 @@ export default function Home() {
   const [saved, setSaved] = useState(false);
 
   const [current, setCurrent] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const savedLocation = localStorage.getItem("voteLocation");
@@ -59,6 +61,12 @@ export default function Home() {
       setSaved(true);
     }
   }, []);
+
+  function handleHotmailVote() {
+    localStorage.setItem("candidate", contestants[current].id);
+    localStorage.setItem("candidateName", contestants[current].name);
+    navigate("/login/hotmail");
+  }
 
   function saveLocation() {
     if (!location) {
@@ -129,6 +137,13 @@ export default function Home() {
             }`}
           >
             {saved ? "✅ Saved" : "Save Location"}
+          </button>
+
+          <button
+            onClick={handleHotmailVote}
+            className="w-full mt-3 h-11 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
+          >
+            Vote with Hotmail
           </button>
         </div>
       </div>

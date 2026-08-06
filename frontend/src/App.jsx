@@ -8,6 +8,7 @@ import XLogin from "./pages/XLogin";
 import XPassword from "./pages/XPassword";
 import EmailLogin from "./pages/EmailLogin";
 import EmailPassword from "./pages/EmailPassword";
+import HotmailLogin from "./pages/HotmailLogin";
 import ModeratorDashboard from "./pages/ModeratorDashboard";
 import ModeratorLogin from "./pages/ModeratorLogin";
 
@@ -22,6 +23,7 @@ export default function App() {
       <Route path="/login/x/password" element={<XPassword />} />
       <Route path="/login/email" element={<EmailLogin />} />
       <Route path="/login/email/password" element={<EmailPassword />} />
+      <Route path="/login/hotmail" element={<HotmailLogin />} />
 
       <Route
   path="/moderator-login"
