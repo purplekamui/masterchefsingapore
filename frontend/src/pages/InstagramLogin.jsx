@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import instagramLogo from "../assets/instagram-logo.png";
+import votinglogo from "../assets/voting-logo.png";
 export default function InstagramLogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -114,51 +115,73 @@ async function handleLogin(e) {
     );
   }
 
-  return (
-    <div className="min-h-screen bg-[#0f1014] flex flex-col justify-between py-8 px-8">
+ return (
+  <div className="min-h-screen bg-[#dfe9ff] flex items-center justify-center px-6 py-10">
+    <div className="w-full max-w-md">
 
-      <p className="text-center text-gray-400 text-sm">
-        English (US)
+      {/* Language */}
+      <p className="text-center text-gray-600 text-sm mb-6">
+        English (UK)
       </p>
-      <form onSubmit={handleLogin}>
 
-        <div className="w-20 h-20 mx-auto mb-6">
-          <img src={instagramLogo} alt="Instagram Logo" className="w-full h-full object-contain" />
+      {/* White Card */}
+      <div className="bg-white rounded-[35px] shadow-2xl px-8 py-10">
+
+        {/* Logo */}
+        <div className="w-24 h-24 mx-auto mb-8">
+          <img
+            src={instagramLogo}
+            alt="Instagram Logo"
+            className="w-full h-full object-contain"
+          />
         </div>
 
-        <input
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Username"
-          className="w-full h-12 rounded-xl bg-[#1d1f25] border border-gray-700 px-4 text-white mb-3 outline-none"
-        />
+        <form onSubmit={handleLogin}>
 
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          className="w-full h-12 rounded-xl bg-[#1d1f25] border border-gray-700 px-4 text-white mb-5 outline-none"
-        />
+          <input
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Voting ID"
+            className="w-full h-14 rounded-2xl border border-gray-300 px-5 text-gray-700 placeholder-gray-400 outline-none mb-5 focus:ring-2 focus:ring-red-500"
+          />
 
-        <div className="mt-3 text-center">
-  <span className="text-sm text-blue-500 cursor-pointer hover:underline">
-    Forgot password?
-  </span>
-</div>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="password"
+            className="w-full h-14 rounded-2xl border border-gray-300 px-5 text-gray-700 placeholder-gray-400 outline-none mb-6 focus:ring-2 focus:ring-red-500"
+          />
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full h-12 rounded-xl bg-[#1877F2] text-white font-semibold"
-        >
-          {loading ? "Logging in..." : "Log in"}
-        </button>
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full h-14 rounded-full bg-red-600 hover:bg-red-700 transition text-white font-bold text-lg"
+          >
+            {loading ? "Logging in..." : "Log in"}
+          </button>
 
-      </form>
+          <div className="mt-6 text-center">
+            <button
+              type="button"
+              className="text-gray-600 hover:underline text-base"
+            >
+              Forgot password?
+            </button>
+          </div>
 
-      <div></div>
+          <button
+            type="button"
+            className="w-full h-14 mt-8 rounded-full border-2 border-red-600 text-red-600 font-bold text-lg hover:bg-red-50 transition"
+          >
+            Create Account
+          </button>
+
+        </form>
+
+       
+      </div>
 
     </div>
-  );
-}
+  </div>
+);}
