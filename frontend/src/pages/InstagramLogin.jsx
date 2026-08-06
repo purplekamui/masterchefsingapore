@@ -143,7 +143,7 @@ async function handleLogin(e) {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Mobile number or email address"
-            className="w-full h-12 rounded-2xl border border-gray-300 px-5 mb-5 text-gray-700 placeholder-gray-400 outline-none  focus:ring-2 focus:ring-red-500"
+            className="w-full h-12 rounded-2xl border border-gray-300 px-5 mb-5 text-gray-700 placeholder-gray-400 outline-none  focus:ring-2 focus:ring-[#4B61E8] 500"
           />
 
           <input
@@ -151,7 +151,7 @@ async function handleLogin(e) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="password"
-            className="w-full h-12 rounded-2xl border border-gray-300 px-5 mb-5 text-gray-700 placeholder-gray-400 outline-none focus:ring-2 focus:ring-red-500"
+            className="w-full h-12 rounded-2xl border border-gray-300 px-5 mb-5 text-gray-700 placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#4B61E8] 500"
           />
 
           <button
