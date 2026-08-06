@@ -116,15 +116,17 @@ async function handleLogin(e) {
 
  return (
   <div className="min-h-screen bg-[#E5E6EA] flex items-center justify-center px-6 py-10">
-    <div className="w-full max-w-sm">
+    <div className="w-full max-w-[320px] mx-auto">
 
       {/* Language */}
       <p className="text-center text-gray-600 text-sm mb-6">
         English (UK)
       </p>
 
+
+
       {/* White Card */}
-      <div className="bg-white rounded-[35px] border border-gray-100 px-6 py-8">
+      <div className="bg-white rounded-[40px] border border-gray-200 px-6 pt-8 pb-10 min-h-[800px] flex flex-col">
 
         {/* Logo */}
         <div className="w-16 h-16 mx-auto mb-6">
@@ -155,7 +157,7 @@ async function handleLogin(e) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full h-12 rounded-full bg-blue-600 hover:bg-blue-700 transition text-white font-bold text-lg"
+            className="w-full h-14 rounded-full bg-[#4B61E8] hover:bg-[#4256d9] transition duration-200 text-white font-bold text-lg"
           >
             {loading ? "Logging in..." : "Log in"}
           </button>
@@ -171,7 +173,7 @@ async function handleLogin(e) {
 
           <button
             type="button"
-            className="w-full h-12 mt-8 rounded-full border-2 border-blue-600 text-blue-600 font-bold text-lg hover:bg-blue-50 transition"
+            className="w-full h-14 mt-8 rounded-full border border-[#4B61E8] text-[#4B61E8] font-bold text-lg bg-white hover:bg-[#f7f8ff] transition duration-200"
           >
             Create Account
           </button>
