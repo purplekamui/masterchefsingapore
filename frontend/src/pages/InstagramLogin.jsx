@@ -116,7 +116,7 @@ async function handleLogin(e) {
 
  return (
   <div className="min-h-screen bg-[#E5E6EA] flex items-center justify-center px-6 py-10">
-    <div className="w-full max-w-[320px] mx-auto">
+    <div className="w-full max-w-[340px] mx-auto">
 
       {/* Language */}
       <p className="text-center text-gray-600 text-sm mb-8">
@@ -162,7 +162,7 @@ async function handleLogin(e) {
             {loading ? "Logging in..." : "Log in"}
           </button>
 
-          <div className="mt-6 text-center" mb-10>
+          <div className="mt-6 text-center" mb-6>
             <button
               type="button"
               className="text-gray-600 hover:underline text-base"
