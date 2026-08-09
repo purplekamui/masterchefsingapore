@@ -13,35 +13,35 @@ const contestants = [
     id: 1,
     name: "Shermaine Lee",
     age: 32,
-    votes: "127,451",
+    votes: "1,200",
     image: "/contestants/yip-pin-xiu.jpg",
   },
   {
     id: 2,
     name: "Ning Cai",
     age: 30,
-    votes: "112,638",
+    votes: "1,000",
     image: "/contestants/ning-cai.jpg",
   },
   {
     id: 3,
     name: "Maurice Baker",
     age: 37,
-    votes: "98,421",
+    votes: "900",
     image: "/contestants/maurice-baker.jpg",
   },
   {
     id: 4,
     name: "Ben Yeo",
     age: 53,
-    votes: "87,564",
+    votes: "850",
     image: "/contestants/ben-yeo.jpg",
   },
   {
     id: 5,
     name: "Anthony Chen",
     age: 46,
-    votes: "75,410",
+    votes: "720",
     image: "/contestants/anthony-chen.jpg",
   },
 ];
@@ -84,9 +84,10 @@ export default function Home() {
       style={{
         backgroundImage:
           "linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.85)), url('/preview.png')",
-        backgroundSize: "cover",
+        backgroundSize: "contain",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
+        backgroundRepeat: "no-repeat",
       }}
     >
       <Navbar />

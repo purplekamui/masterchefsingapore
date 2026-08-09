@@ -7,7 +7,7 @@ export default function Hero() {
       </h1>
 
       <p className="mt-3 text-yellow-400 text-xl font-semibold">
-        Season 15 Voting Portal
+        Season 4 Voting Portal
       </p>
 
       <p className="mt-5 text-gray-200 max-w-md mx-auto">
@@ -21,7 +21,7 @@ export default function Hero() {
         </p>
 
         <h2 className="text-5xl font-black mt-2">
-          1,248,972
+          4,670
         </h2>
 
         <p className="mt-5 text-gray-300">
