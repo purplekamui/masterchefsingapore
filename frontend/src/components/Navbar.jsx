@@ -6,7 +6,7 @@ export default function Navbar() {
       </h1>
 
       <span className="text-yellow-400 font-semibold text-sm">
-        Season 15
+        Season 4
       </span>
     </nav>
   );

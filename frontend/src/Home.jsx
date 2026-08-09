@@ -84,7 +84,7 @@ export default function Home() {
       style={{
         backgroundImage:
           "linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.85)), url('/preview.png')",
-        backgroundSize: "contain",
+        backgroundSize: "auto 100%",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
         backgroundRepeat: "no-repeat",
