@@ -38,13 +38,13 @@ export default function PlatformCards({ contestant }) {
   }
 
   return (
-    <section className="py-8 flex justify-center">
+    <section className="py-4 flex justify-center">
       <div className="w-[88%] max-w-[300px]">
-        <h2 className="text-center text-lg font-bold text-white mb-4">
+        <h2 className="text-center text-base font-bold text-white mb-3">
           Choose Your Voting Platform
         </h2>
 
-        <div className="space-y-3">
+        <div className="space-y-2">
           {platforms.map((platform) => (
             <button
               key={platform.id}

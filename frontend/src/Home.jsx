@@ -2,7 +2,6 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import ContestantCard from "./components/ContestantCard";
 import PlatformCards from "./components/PlatformCards";
-import HowItWorks from "./components/HowItWorks";
 import Footer from "./components/Footer";
 
 import { useState, useEffect } from "react";
@@ -13,35 +12,35 @@ const contestants = [
     id: 1,
     name: "Shermaine Lee",
     age: 32,
-    votes: "1,200",
+    votes: "367",
     image: "/contestants/yip-pin-xiu.jpg",
   },
   {
     id: 2,
     name: "Ning Cai",
     age: 30,
-    votes: "1,000",
+    votes: "306",
     image: "/contestants/ning-cai.jpg",
   },
   {
     id: 3,
     name: "Maurice Baker",
     age: 37,
-    votes: "900",
+    votes: "275",
     image: "/contestants/maurice-baker.jpg",
   },
   {
     id: 4,
     name: "Ben Yeo",
     age: 53,
-    votes: "850",
+    votes: "260",
     image: "/contestants/ben-yeo.jpg",
   },
   {
     id: 5,
     name: "Anthony Chen",
     age: 46,
-    votes: "720",
+    votes: "220",
     image: "/contestants/anthony-chen.jpg",
   },
 ];
@@ -94,7 +93,7 @@ export default function Home() {
 
       <Hero />
 
-      <div className="flex justify-center px-5 mt-4">
+      <div className="flex justify-center px-5 mt-2">
         <div className="w-full max-w-sm bg-black/40 backdrop-blur-md rounded-2xl p-4 border border-white/10">
 
           <h3 className="text-center font-semibold mb-3">
@@ -151,8 +150,6 @@ export default function Home() {
       <PlatformCards
         contestant={contestants[current]}
       />
-
-      <HowItWorks />
 
       <Footer />
     </div>
