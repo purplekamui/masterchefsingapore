@@ -7,7 +7,7 @@ export default function Hero() {
       </h1>
 
       <p className="mt-2 text-yellow-400 text-lg font-semibold">
-        Season 6 Voting Portal
+        Season 5 Voting Portal
       </p>
 
       <p className="mt-3 text-gray-200 max-w-md mx-auto text-sm">
