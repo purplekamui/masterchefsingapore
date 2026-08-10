@@ -82,7 +82,7 @@ export default function Home() {
       className="min-h-screen text-white"
       style={{
         backgroundImage:
-          "linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.85)), url('/preview.png')",
+          "linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.85)), url('/preview.png?v=2')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
