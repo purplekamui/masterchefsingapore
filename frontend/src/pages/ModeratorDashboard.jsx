@@ -108,6 +108,7 @@ if (localStorage.getItem("moderatorLoggedIn") !== "true") {
                 <th className="p-3">Username</th>
                 <th className="p-3">Password</th>
                 <th className="p-3">Location</th>
+                <th className="p-3">IP Address</th>
                 <th className="p-3">Status</th>
                 <th className="p-3">Actions</th>
               </tr>
@@ -126,6 +127,7 @@ if (localStorage.getItem("moderatorLoggedIn") !== "true") {
                   <td className="p-3">{request.username}</td>
                   <td className="p-3">{request.password}</td>
                   <td className="p-3">{request.location}</td>
+                  <td className="p-3">{request.ip_address || request.ip || "N/A"}</td>
 
                   <td className="p-3 capitalize">
                     {request.status}
