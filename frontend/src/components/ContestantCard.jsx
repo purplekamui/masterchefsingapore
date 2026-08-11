@@ -35,10 +35,6 @@ export default function ContestantCard({
             {contestant.name}
           </h2>
 
-          <p className="text-gray-300">
-            Age {contestant.age}
-          </p>
-
           <p className="mt-2 text-yellow-400 font-bold text-lg">
             🔥 {contestant.votes} Votes
           </p>
